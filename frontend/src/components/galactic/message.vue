@@ -1,10 +1,13 @@
+<script setup>
+/* const props = defineProps(['message'])
+
+console.log(props.message) */
+defineProps(['message'])
+console.log(props.message)
+</script>
+
 <template>
     <div class="message">
-        <h2>
-            <slot name="heading">
-
-            </slot>
-        </h2>
-        <slot></slot>
+        {{ message }}
     </div>
 </template>
