@@ -12,57 +12,17 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/', (req, res) => {
-    res.json({'greeting': 'Hello World!'})
+    res.json({
+        "announcements": [
+          {"title":"Title",
+          "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam cursus nisl dolor, vel luctus justo fermentum quis. Etiam nec risus a neque dapibus posuere vitae vel mi. Maecenas venenatis feugiat ante, id semper erat iaculis sed. Nullam egestas lobortis placerat. Nulla posuere felis non erat efficitur porta ac vitae felis. Integer pellentesque ligula sagittis risus semper, non malesuada augue ultricies. Vestibulum venenatis nisi nulla, sit amet luctus diam euismod vitae. Nulla id libero eget purus faucibus laoreet vel quis purus. Mauris eu dapibus quam, nec pretium eros. Aliquam varius orci quam, eu placerat ante rutrum nec. Etiam ullamcorper hendrerit pellentesque. Duis nec elit feugiat, scelerisque massa id, feugiat metus. In accumsan felis bibendum nisl tincidunt rutrum. Cras sed felis pharetra, ultrices justo id, hendrerit magna. Integer fringilla condimentum fringilla. Pellentesque accumsan in quam non tristique. Etiam facilisis est id laoreet consectetur. Phasellus in rhoncus arcu. Nulla non neque ut augue consectetur imperdiet nec sit amet neque. Aenean vitae felis mattis libero ornare ultricies in sit amet enim. Donec rutrum id dolor ac varius. In rhoncus ac ligula eu aliquet. Ut eu mauris quis diam malesuada mollis. Quisque condimentum ante sit amet nisi rutrum, at ultricies nulla tempus. Nulla sit amet augue iaculis, mollis magna nec, convallis arcu. Duis metus urna, convallis sit amet lacinia ac, consequat nec orci."}
+        ]
+      })
 })
 
 app.get('/healthcheck', (req, res) => {
     res.json({"heartbeat": true})
 })
-
-app.post('/reserve', async(req, res) => {
-    if (!req.body) {
-        res.status(400).send()
-    }
-
-    const party_request = {
-        'name': [],
-        'size': req.body.size
-    }
-    party_request.name.push(req.body.name)
-
-    if (parties.length !== 0) {
-        parties.forEach((party) => {
-            if (party.size === req.body.size) {
-                console.log("Records for party: ", party)
-                party.name.push(req.body.name)
-            } else {
-                console.log("No Entry, creating...")
-                parties.push(party_request)
-            }
-        })
-    } else {
-        console.log("Empty Record, inserting a starting record.")
-        parties.push(party_request)
-    }
-
-    console.log("parties", parties)
-
-    try {
-        res.send(parties)
-    } catch (error) {
-        res.status(500).send(error)
-    }
-})
-
-app.get("/reserve", async (req, res) => {
-    console.log("Parties", parties)
-
-    try {
-        res.send(parties)
-    } catch (error) {
-        res.status(500).send(error)
-    }
-});
 
 app.listen(port, function () {
     console.log('App listening on port ' + port + '!')
