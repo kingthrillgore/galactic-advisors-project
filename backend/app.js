@@ -20,6 +20,10 @@ app.get('/', (req, res) => {
       {
         "id": "2",
         "body": "~~bone scott~~"
+      },
+      {
+        "id": "3",
+        "body": "Did you know that [you're not perfect](https://www.youtube.com/watch?v=xFDldk9D_Qc)?"
       }
     ])
 })

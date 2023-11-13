@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import { VueShowdown } from 'vue-showdown';
+
 let messages = ref(null)
 
 fetch("http://localhost:8080/", {
@@ -13,8 +15,6 @@ fetch("http://localhost:8080/", {
         console.error("Guru Meditation:", error)
     })
     .finally(console.log(messages))
-
-import message from './components/galactic/message.vue'
 </script>
 
 <template>
@@ -22,7 +22,7 @@ import message from './components/galactic/message.vue'
         <p>Messages Found</p>
 
         <div v-for="m in messages" :key="m.id">
-            <p>{{ m.body }}</p>
+            <VueShowdown :markdown="m.body" />
         </div>
     </div>
 
