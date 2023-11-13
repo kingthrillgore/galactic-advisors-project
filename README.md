@@ -14,4 +14,5 @@ This is a test project intended during an interview. Plagarising this project fo
 
 ## Things I wanted to do:
 
+* Add pagination support
 * Use [axios](https://github.com/axios/axios) instead of `fetch()`.
