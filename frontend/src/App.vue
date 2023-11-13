@@ -18,10 +18,8 @@ fetch("http://localhost:8080/", {
 </script>
 
 <template>
-    <div v-if="messages">
-        <p>Messages Found</p>
-
-        <div v-for="m in messages" :key="m.id">
+    <div v-if="messages" class="wrapper">
+        <div v-for="m in messages" :key="m.id" class="message" style="margin: 0 0 2rem; border: 3px solid #333; border-radius: 3px; padding: 1rem">
             <VueShowdown :markdown="m.body" />
         </div>
     </div>
